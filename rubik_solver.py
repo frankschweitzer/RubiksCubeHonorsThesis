@@ -1,6 +1,5 @@
 import random
 import time
-from rubik import solve
 from rubik.cube import Cube
 from rubik.solve import Solver
 from rubik.optimize import optimize_moves
@@ -8,12 +7,13 @@ from rubik.optimize import optimize_moves
 SOLVED_CUBE_STR = "OOOOOOOOOYYYWWWGGGBBBYYYWWWGGGBBBYYYWWWGGGBBBRRRRRRRRR"
 MOVES = ["L", "R", "U", "D", "F", "B", "M", "E", "S"]
 
-
+original_cube = Cube("OOOOOOOOOYYYWWWGGGBBBYYYWWWGGGBBBYYYWWWGGGBBBRRRRRRRRR")
 def random_cube():
-    scramble_moves = " ".join(random.choices(MOVES, k=200))
-    a = Cube(SOLVED_CUBE_STR)
-    a.sequence(scramble_moves)
-    return a
+    scramble_moves = " ".join(random.choices(MOVES, k=1))
+    print(scramble_moves)
+    rand_cube = original_cube
+    rand_cube.sequence(scramble_moves)
+    return rand_cube
 
 
 def run():
@@ -30,6 +30,7 @@ def run():
     while i < 5:
         # generate random cube and solve for the cube
         C = random_cube()
+        print(C.flat_str())
         solver = Solver(C)
 
         start = time.time()
@@ -59,5 +60,4 @@ def run():
 
 
 if __name__ == '__main__':
-    solve.DEBUG = False
     run()

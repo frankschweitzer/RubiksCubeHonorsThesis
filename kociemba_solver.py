@@ -7,17 +7,11 @@ from rubik.solve import Solver
 from rubik.optimize import optimize_moves
 
 up = 'rybbyyyyy'
-u_face = []
 left = 'goooobooo'
-l_face = []
 front = 'bbgrbbbob'
-f_face = []
 right = 'orrwrrrrg'
-r_face = []
 back = 'ygwgggrgg'
-b_face = []
 down = 'wywwwwwwy'
-d_face = []
 cube = up + right + front + down + left + back
 
 cube = cube.replace('y', 'U')
